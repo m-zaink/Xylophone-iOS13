@@ -19,7 +19,15 @@ class ViewController: UIViewController {
             let url = Bundle.main.url(forResource: currentTitle, withExtension: "wav")!
             player = try! AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
             player.play()
+            
+            doClickAnimation(on: sender)
+        }
+    }
+    
+    func doClickAnimation(on sender: UIButton) {
+        sender.titleLabel?.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+            sender.titleLabel?.alpha = 1.0
         }
     }
 }
-
